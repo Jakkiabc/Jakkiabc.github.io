@@ -156,6 +156,278 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/05/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jakki">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jakki's world">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/05/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-title-link" itemprop="url">二叉树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-05 20:24:55 / Modified: 20:31:21" itemprop="dateCreated datePublished" datetime="2022-08-05T20:24:55+08:00">2022-08-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[Toc]</p>
+<h3 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a><strong>数据结构与算法</strong></h3><hr>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a><strong>二叉树</strong></h4><h5 id="1-二叉树的定义"><a href="#1-二叉树的定义" class="headerlink" title="1.二叉树的定义"></a>1.二叉树的定义</h5><blockquote>
+<p>二叉树（Binary Tree）：树中各个节点的度不大于 2 个的有序树，称为二叉树。通常树中的分支节点被称为 「左子树」 或 「右子树」。二叉树的分支具有左右次序，不能随意互换位置。</p>
+</blockquote>
+<ul>
+<li>下面是一些特别的二叉树类型：</li>
+</ul>
+<p><strong>1. 满二叉树</strong></p>
+<blockquote>
+<p>满二叉树（Full Binary Tree）：如果所有分支节点都存在左子树和右子树，并且所有叶子节点都在同一层上，则称该二叉树为满二叉树。</p>
+</blockquote>
+<ul>
+<li>例子： <img src="/../_resources/f0b09a345b1f7bad5db8b7f68fde997e.png"></li>
+</ul>
+<p><strong>2. 完全二叉树</strong></p>
+<blockquote>
+<p>完全二叉树（Complete Binary Tree）：如果叶子节点只能出现在最下面两层，并且最下层的叶子节点都依次排列在该层最左边的位置上，具有这种特点的二叉树称为完全二叉树。</p>
+</blockquote>
+<ul>
+<li>同等节点数的二叉树中，完全二叉树的<strong>深度最小</strong>。</li>
+</ul>
+<p><img src="/../_resources/7e32e021cc717ede2a0da6de73e0737c.png"><br><strong>3. 二叉搜索树</strong></p>
+<blockquote>
+<p>二叉搜索树（Binary Search Tree）：也叫做二叉查找树、有序二叉树或者排序二叉树。是指一棵空树或者具有下列性质的二叉树：如果任意节点的左子树不为空，则左子树上所有节点的值均小于它的根节点的值。如果任意节点的右子树不为空，则右子树上所有节点的值均大于它的根节点的值。任意节点的左子树、右子树均为二叉搜索树。</p>
+</blockquote>
+<p><strong>4. 平衡二叉搜索树</strong></p>
+<blockquote>
+<p>平衡二叉搜索树（Balanced Binary Tree）：一种结构平衡的二叉搜索树。即叶节点高度差的绝对值不超过 1，并且左右两个子树都是一棵平衡二叉搜索树。平衡二叉树可以在 O(logn) 内完成插入、查找和删除操作。最早被发明的平衡二叉搜索树为 「AVL 树（Adelson-Velsky and Landis Tree））」。AVL 树满足以下性质：空二叉树是一棵 AVL 树。如果 T 是一棵 AVL 树，那么其左右子树也是 AVL 树，并且 |h(ls)−h(rs)|≤1，h(ls) 是左子树的高度，h(rs) 是右子树的高度。AVL 树的高度为 O(logn)。</p>
+</blockquote>
+<p><img src="/../_resources/49b99d359aad3a464af9e05d2a9e792d.png"></p>
+<h5 id="2-二叉树的遍历问题"><a href="#2-二叉树的遍历问题" class="headerlink" title="2.二叉树的遍历问题"></a>2.二叉树的遍历问题</h5><h6 id="Ⅰ-递归"><a href="#Ⅰ-递归" class="headerlink" title="Ⅰ 递归"></a>Ⅰ 递归</h6><p><em><strong><code>递归</code>的三个要素</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[确定递归函数的参数和返回值] --&gt;确定终止条件</span><br><span class="line">确定终止条件--&gt; 确定单层递归的逻辑</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>前中后遍历区别</strong>：</p>
+<ul>
+<li>先输出root，然后递归root.left和root.right的为前序遍历；</li>
+<li>先递归root.left，再输出root，最后递归root.right的为中序遍历；</li>
+<li>先递归root.left和root.right，再输出root的为后序遍历。</li>
+</ul>
+<p>其代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">*<span class="comment"># 前序遍历-递归-LC144_二叉树的前序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        *<span class="comment"># 保存结果*</span></span><br><span class="line">        result = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">traversal</span>(<span class="params">root: TreeNode</span>):</span><br><span class="line">            <span class="keyword">if</span> root == <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            result.append(root.val) *<span class="comment"># 前序*</span></span><br><span class="line">            traversal(root.left)    *<span class="comment"># 左*</span></span><br><span class="line">            traversal(root.right)   *<span class="comment"># 右*</span></span><br><span class="line"></span><br><span class="line">        traversal(root)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">中后序同上</span><br></pre></td></tr></table></figure>
+
+<h6 id="Ⅱ-迭代"><a href="#Ⅱ-迭代" class="headerlink" title="Ⅱ 迭代"></a><strong>Ⅱ 迭代</strong></h6><p>python：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">*<span class="comment"># 前序遍历-迭代-LC144_二叉树的前序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        *<span class="comment"># 根结点为空则返回空列表*</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = [root]</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            *<span class="comment"># 中结点先处理*</span></span><br><span class="line">            result.append(node.val)</span><br><span class="line">            *<span class="comment"># 右孩子先入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">            *<span class="comment"># 左孩子后入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">            stack.append(node.left)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">*<span class="comment"># 中序遍历-迭代-LC94_二叉树的中序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = []  *<span class="comment"># 不能提前将root结点加入stack中*</span></span><br><span class="line">        result = []</span><br><span class="line">        cur = root</span><br><span class="line">        <span class="keyword">while</span> cur <span class="keyword">or</span> stack:</span><br><span class="line">            *<span class="comment"># 先迭代访问最底层的左子树结点*</span></span><br><span class="line">            <span class="keyword">if</span> cur:</span><br><span class="line">                stack.append(cur)</span><br><span class="line">                cur = cur.left</span><br><span class="line">            *<span class="comment"># 到达最左结点后处理栈顶结点    *</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = stack.pop()</span><br><span class="line">                result.append(cur.val)</span><br><span class="line">                *<span class="comment"># 取栈顶元素右结点*</span></span><br><span class="line">                cur = cur.right</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">*<span class="comment"># 后序遍历-迭代-LC145_二叉树的后序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">postorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = [root]</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            *<span class="comment"># 中结点先处理*</span></span><br><span class="line">            result.append(node.val)</span><br><span class="line">            *<span class="comment"># 左孩子先入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                stack.append(node.left)</span><br><span class="line">            *<span class="comment"># 右孩子后入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">        *<span class="comment"># 将最终的数组翻转*</span></span><br><span class="line">        <span class="keyword">return</span> result[::-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h6 id="Ⅲ-统一迭代"><a href="#Ⅲ-统一迭代" class="headerlink" title="Ⅲ 统一迭代"></a><em><strong>Ⅲ 统一迭代</strong></em></h6><ul>
+<li>将前中后序遍历迭代统一的方法：标记法</li>
+</ul>
+<p><code>具体步骤</code>:就是要处理的节点放入栈之后，紧接着放入一个空指针作为标记</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        result = []</span><br><span class="line">        st= []</span><br><span class="line">        <span class="keyword">if</span> root:</span><br><span class="line">            st.append(root)</span><br><span class="line">        <span class="keyword">while</span> st:</span><br><span class="line">            node = st.pop()</span><br><span class="line">            <span class="keyword">if</span> node != <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">if</span> node.right: *<span class="comment">#右*</span></span><br><span class="line">                    st.append(node.right)</span><br><span class="line">                <span class="keyword">if</span> node.left: *<span class="comment">#左*</span></span><br><span class="line">                    st.append(node.left)</span><br><span class="line">                st.append(node) *<span class="comment">#中*</span></span><br><span class="line">                st.append(<span class="literal">None</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                node = st.pop()</span><br><span class="line">                result.append(node.val)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h6 id="Ⅳ-层序遍历"><a href="#Ⅳ-层序遍历" class="headerlink" title="Ⅳ 层序遍历"></a><em><strong>Ⅳ 层序遍历</strong></em></h6><p>层序遍历，顾名思义，就是从左到右一层一层的去遍历二叉树，需要借用队列来实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;二叉树层序遍历迭代解法&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">levelOrder</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line">        <span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">        que = deque([root])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> que:</span><br><span class="line">            size = <span class="built_in">len</span>(que)</span><br><span class="line">            result = []</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(size):</span><br><span class="line">                cur = que.popleft()</span><br><span class="line">                result.append(cur.val)</span><br><span class="line">                <span class="keyword">if</span> cur.left:</span><br><span class="line">                    que.append(cur.left)</span><br><span class="line">                <span class="keyword">if</span> cur.right:</span><br><span class="line">                    que.append(cur.right)</span><br><span class="line">            results.append(result)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> results</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">*<span class="comment"># 递归法class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">levelOrder</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">helper</span>(<span class="params">root, depth</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(res) == depth: res.append([]) *<span class="comment"># start the current depth*</span></span><br><span class="line">            res[depth].append(root.val) *<span class="comment"># fulfil the current depth*</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>  root.left: helper(root.left, depth + <span class="number">1</span>) *<span class="comment"># process child nodes for the next depth*</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>  root.right: helper(root.right, depth + <span class="number">1</span>)</span><br><span class="line">        helper(root, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-二叉树的还原"><a href="#3-二叉树的还原" class="headerlink" title="3.二叉树的还原"></a>3.二叉树的还原</h5><h6 id="Ⅰ前序-中序"><a href="#Ⅰ前序-中序" class="headerlink" title="Ⅰ前序+中序"></a>Ⅰ前序+中序</h6><h6 id="Ⅱ-前序-后序"><a href="#Ⅱ-前序-后序" class="headerlink" title="Ⅱ 前序+后序"></a>Ⅱ 前序+后序</h6><h6 id="Ⅲ-中序-后序"><a href="#Ⅲ-中序-后序" class="headerlink" title="Ⅲ 中序+后序"></a>Ⅲ 中序+后序</h6><h5 id="4-二叉树的经典题目"><a href="#4-二叉树的经典题目" class="headerlink" title="4.二叉树的经典题目"></a>4.二叉树的经典题目</h5><hr>
+<h6 id="4-1翻转二叉树"><a href="#4-1翻转二叉树" class="headerlink" title="4.1翻转二叉树"></a>4.1翻转二叉树</h6><h6 id="4-2对称二叉树"><a href="#4-2对称二叉树" class="headerlink" title="4.2对称二叉树"></a>4.2对称二叉树</h6><h6 id="4-3平衡二叉树"><a href="#4-3平衡二叉树" class="headerlink" title="4.3平衡二叉树"></a>4.3平衡二叉树</h6><h6 id="4-4二叉树的最大深度"><a href="#4-4二叉树的最大深度" class="headerlink" title="4.4二叉树的最大深度"></a>4.4二叉树的最大深度</h6><h6 id="4-5二叉树的最小深度"><a href="#4-5二叉树的最小深度" class="headerlink" title="4.5二叉树的最小深度"></a>4.5二叉树的最小深度</h6><h6 id="4-6二叉树的所有路径"><a href="#4-6二叉树的所有路径" class="headerlink" title="4.6二叉树的所有路径"></a>4.6二叉树的所有路径</h6><h6 id="4-7路径总和"><a href="#4-7路径总和" class="headerlink" title="4.7路径总和"></a>4.7路径总和</h6><h6 id="4-8最大二叉树"><a href="#4-8最大二叉树" class="headerlink" title="4.8最大二叉树"></a>4.8最大二叉树</h6><h6 id="4-9合并二叉树"><a href="#4-9合并二叉树" class="headerlink" title="4.9合并二叉树"></a>4.9合并二叉树</h6><h6 id="4-10完全二叉树的节点个数"><a href="#4-10完全二叉树的节点个数" class="headerlink" title="4.10完全二叉树的节点个数"></a>4.10完全二叉树的节点个数</h6><h6 id="4-11二叉树的最近公共祖先"><a href="#4-11二叉树的最近公共祖先" class="headerlink" title="4.11二叉树的最近公共祖先"></a>4.11二叉树的最近公共祖先</h6><h6 id="4-12填充每个节点的下一个右侧节点"><a href="#4-12填充每个节点的下一个右侧节点" class="headerlink" title="4.12填充每个节点的下一个右侧节点"></a>4.12填充每个节点的下一个右侧节点</h6><h6 id="4-13二叉树的序列与反序列化"><a href="#4-13二叉树的序列与反序列化" class="headerlink" title="4.13二叉树的序列与反序列化"></a>4.13二叉树的序列与反序列化</h6>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/05/d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jakki">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jakki's world">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/05/d/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-05 19:13:01 / Modified: 19:06:55" itemprop="dateCreated datePublished" datetime="2022-08-05T19:13:01+08:00">2022-08-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[Toc]</p>
+<ul>
+<li><a href="">数据结构与算法</a><ul>
+<li><a href="">二叉树</a><ul>
+<li><a href="">1.二叉树的定义</a></li>
+<li><a href="">2.二叉树的遍历问题</a><ul>
+<li><a href="">Ⅰ 递归</a></li>
+<li><a href="">Ⅱ 迭代</a></li>
+<li><a href="">Ⅲ 统一迭代</a></li>
+<li><a href="">Ⅳ 层序遍历</a></li>
+</ul>
+</li>
+<li><a href="">3.二叉树的还原</a><ul>
+<li><a href="">Ⅰ前序+中序</a></li>
+<li><a href="">Ⅱ 前序+后序</a></li>
+<li><a href="">Ⅲ 中序+后序</a></li>
+</ul>
+</li>
+<li><a href="">4.二叉树的经典题目</a><ul>
+<li><a href="">4.1翻转二叉树</a></li>
+<li><a href="">4.2对称二叉树</a></li>
+<li><a href="">4.3平衡二叉树</a></li>
+<li><a href="">4.4二叉树的最大深度</a></li>
+<li><a href="">4.5二叉树的最小深度</a></li>
+<li><a href="">4.6二叉树的所有路径</a></li>
+<li><a href="">4.7路径总和</a></li>
+<li><a href="">4.8最大二叉树</a></li>
+<li><a href="">4.9合并二叉树</a></li>
+<li><a href="">4.10完全二叉树的节点个数</a></li>
+<li><a href="">4.11二叉树的最近公共祖先</a></li>
+<li><a href="">4.12填充每个节点的下一个右侧节点</a></li>
+<li><a href="">4.13二叉树的序列化与反序列化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a><strong>数据结构与算法</strong></h3><hr>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a><strong>二叉树</strong></h4><h5 id="1-二叉树的定义"><a href="#1-二叉树的定义" class="headerlink" title="1.二叉树的定义"></a>1.二叉树的定义</h5><blockquote>
+<p>二叉树（Binary Tree）：树中各个节点的度不大于 2 个的有序树，称为二叉树。通常树中的分支节点被称为 「左子树」 或 「右子树」。二叉树的分支具有左右次序，不能随意互换位置。</p>
+</blockquote>
+<ul>
+<li>下面是一些特别的二叉树类型：</li>
+</ul>
+<p><strong>1. 满二叉树</strong></p>
+<blockquote>
+<p>满二叉树（Full Binary Tree）：如果所有分支节点都存在左子树和右子树，并且所有叶子节点都在同一层上，则称该二叉树为满二叉树。</p>
+</blockquote>
+<ul>
+<li>例子： <img src="/../_resources/f0b09a345b1f7bad5db8b7f68fde997e.png"></li>
+</ul>
+<p><strong>2. 完全二叉树</strong></p>
+<blockquote>
+<p>完全二叉树（Complete Binary Tree）：如果叶子节点只能出现在最下面两层，并且最下层的叶子节点都依次排列在该层最左边的位置上，具有这种特点的二叉树称为完全二叉树。</p>
+</blockquote>
+<ul>
+<li>同等节点数的二叉树中，完全二叉树的<strong>深度最小</strong>。</li>
+</ul>
+<p><img src="/../_resources/7e32e021cc717ede2a0da6de73e0737c.png"><br><strong>3. 二叉搜索树</strong></p>
+<blockquote>
+<p>二叉搜索树（Binary Search Tree）：也叫做二叉查找树、有序二叉树或者排序二叉树。是指一棵空树或者具有下列性质的二叉树：如果任意节点的左子树不为空，则左子树上所有节点的值均小于它的根节点的值。如果任意节点的右子树不为空，则右子树上所有节点的值均大于它的根节点的值。任意节点的左子树、右子树均为二叉搜索树。</p>
+</blockquote>
+<p><strong>4. 平衡二叉搜索树</strong></p>
+<blockquote>
+<p>平衡二叉搜索树（Balanced Binary Tree）：一种结构平衡的二叉搜索树。即叶节点高度差的绝对值不超过 1，并且左右两个子树都是一棵平衡二叉搜索树。平衡二叉树可以在 O(logn) 内完成插入、查找和删除操作。最早被发明的平衡二叉搜索树为 「AVL 树（Adelson-Velsky and Landis Tree））」。AVL 树满足以下性质：空二叉树是一棵 AVL 树。如果 T 是一棵 AVL 树，那么其左右子树也是 AVL 树，并且 |h(ls)−h(rs)|≤1，h(ls) 是左子树的高度，h(rs) 是右子树的高度。AVL 树的高度为 O(logn)。</p>
+</blockquote>
+<p><img src="/../_resources/49b99d359aad3a464af9e05d2a9e792d.png"></p>
+<h5 id="2-二叉树的遍历问题"><a href="#2-二叉树的遍历问题" class="headerlink" title="2.二叉树的遍历问题"></a>2.二叉树的遍历问题</h5><h6 id="Ⅰ-递归"><a href="#Ⅰ-递归" class="headerlink" title="Ⅰ 递归"></a>Ⅰ 递归</h6><p><em><strong><code>递归</code>的三个要素</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[确定递归函数的参数和返回值] --&gt;确定终止条件</span><br><span class="line">确定终止条件--&gt; 确定单层递归的逻辑</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>前中后遍历区别</strong>：</p>
+<ul>
+<li>先输出root，然后递归root.left和root.right的为前序遍历；</li>
+<li>先递归root.left，再输出root，最后递归root.right的为中序遍历；</li>
+<li>先递归root.left和root.right，再输出root的为后序遍历。</li>
+</ul>
+<p>其代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">*<span class="comment"># 前序遍历-递归-LC144_二叉树的前序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        *<span class="comment"># 保存结果*</span></span><br><span class="line">        result = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">traversal</span>(<span class="params">root: TreeNode</span>):</span><br><span class="line">            <span class="keyword">if</span> root == <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            result.append(root.val) *<span class="comment"># 前序*</span></span><br><span class="line">            traversal(root.left)    *<span class="comment"># 左*</span></span><br><span class="line">            traversal(root.right)   *<span class="comment"># 右*</span></span><br><span class="line"></span><br><span class="line">        traversal(root)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">中后序同上</span><br></pre></td></tr></table></figure>
+
+<h6 id="Ⅱ-迭代"><a href="#Ⅱ-迭代" class="headerlink" title="Ⅱ 迭代"></a><strong>Ⅱ 迭代</strong></h6><p>python：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">*<span class="comment"># 前序遍历-迭代-LC144_二叉树的前序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        *<span class="comment"># 根结点为空则返回空列表*</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = [root]</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            *<span class="comment"># 中结点先处理*</span></span><br><span class="line">            result.append(node.val)</span><br><span class="line">            *<span class="comment"># 右孩子先入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">            *<span class="comment"># 左孩子后入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">            stack.append(node.left)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">*<span class="comment"># 中序遍历-迭代-LC94_二叉树的中序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = []  *<span class="comment"># 不能提前将root结点加入stack中*</span></span><br><span class="line">        result = []</span><br><span class="line">        cur = root</span><br><span class="line">        <span class="keyword">while</span> cur <span class="keyword">or</span> stack:</span><br><span class="line">            *<span class="comment"># 先迭代访问最底层的左子树结点*</span></span><br><span class="line">            <span class="keyword">if</span> cur:</span><br><span class="line">                stack.append(cur)</span><br><span class="line">                cur = cur.left</span><br><span class="line">            *<span class="comment"># 到达最左结点后处理栈顶结点    *</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = stack.pop()</span><br><span class="line">                result.append(cur.val)</span><br><span class="line">                *<span class="comment"># 取栈顶元素右结点*</span></span><br><span class="line">                cur = cur.right</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">*<span class="comment"># 后序遍历-迭代-LC145_二叉树的后序遍历class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">postorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = [root]</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            *<span class="comment"># 中结点先处理*</span></span><br><span class="line">            result.append(node.val)</span><br><span class="line">            *<span class="comment"># 左孩子先入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                stack.append(node.left)</span><br><span class="line">            *<span class="comment"># 右孩子后入栈*</span></span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">        *<span class="comment"># 将最终的数组翻转*</span></span><br><span class="line">        <span class="keyword">return</span> result[::-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h6 id="Ⅲ-统一迭代"><a href="#Ⅲ-统一迭代" class="headerlink" title="Ⅲ 统一迭代"></a><em><strong>Ⅲ 统一迭代</strong></em></h6><ul>
+<li>将前中后序遍历迭代统一的方法：标记法</li>
+</ul>
+<p><code>具体步骤</code>:就是要处理的节点放入栈之后，紧接着放入一个空指针作为标记</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preorderTraversal</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        result = []</span><br><span class="line">        st= []</span><br><span class="line">        <span class="keyword">if</span> root:</span><br><span class="line">            st.append(root)</span><br><span class="line">        <span class="keyword">while</span> st:</span><br><span class="line">            node = st.pop()</span><br><span class="line">            <span class="keyword">if</span> node != <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">if</span> node.right: *<span class="comment">#右*</span></span><br><span class="line">                    st.append(node.right)</span><br><span class="line">                <span class="keyword">if</span> node.left: *<span class="comment">#左*</span></span><br><span class="line">                    st.append(node.left)</span><br><span class="line">                st.append(node) *<span class="comment">#中*</span></span><br><span class="line">                st.append(<span class="literal">None</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                node = st.pop()</span><br><span class="line">                result.append(node.val)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h6 id="Ⅳ-层序遍历"><a href="#Ⅳ-层序遍历" class="headerlink" title="Ⅳ 层序遍历"></a><em><strong>Ⅳ 层序遍历</strong></em></h6><p>层序遍历，顾名思义，就是从左到右一层一层的去遍历二叉树，需要借用队列来实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;二叉树层序遍历迭代解法&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">levelOrder</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line">        <span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">        que = deque([root])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> que:</span><br><span class="line">            size = <span class="built_in">len</span>(que)</span><br><span class="line">            result = []</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(size):</span><br><span class="line">                cur = que.popleft()</span><br><span class="line">                result.append(cur.val)</span><br><span class="line">                <span class="keyword">if</span> cur.left:</span><br><span class="line">                    que.append(cur.left)</span><br><span class="line">                <span class="keyword">if</span> cur.right:</span><br><span class="line">                    que.append(cur.right)</span><br><span class="line">            results.append(result)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> results</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">*<span class="comment"># 递归法class Solution:*</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">levelOrder</span>(<span class="params">self, root: TreeNode</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">helper</span>(<span class="params">root, depth</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(res) == depth: res.append([]) *<span class="comment"># start the current depth*</span></span><br><span class="line">            res[depth].append(root.val) *<span class="comment"># fulfil the current depth*</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>  root.left: helper(root.left, depth + <span class="number">1</span>) *<span class="comment"># process child nodes for the next depth*</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>  root.right: helper(root.right, depth + <span class="number">1</span>)</span><br><span class="line">        helper(root, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-二叉树的还原"><a href="#3-二叉树的还原" class="headerlink" title="3.二叉树的还原"></a>3.二叉树的还原</h5><h6 id="Ⅰ前序-中序"><a href="#Ⅰ前序-中序" class="headerlink" title="Ⅰ前序+中序"></a>Ⅰ前序+中序</h6><h6 id="Ⅱ-前序-后序"><a href="#Ⅱ-前序-后序" class="headerlink" title="Ⅱ 前序+后序"></a>Ⅱ 前序+后序</h6><h6 id="Ⅲ-中序-后序"><a href="#Ⅲ-中序-后序" class="headerlink" title="Ⅲ 中序+后序"></a>Ⅲ 中序+后序</h6><h5 id="4-二叉树的经典题目"><a href="#4-二叉树的经典题目" class="headerlink" title="4.二叉树的经典题目"></a>4.二叉树的经典题目</h5><hr>
+<h6 id="4-1翻转二叉树"><a href="#4-1翻转二叉树" class="headerlink" title="4.1翻转二叉树"></a>4.1翻转二叉树</h6><h6 id="4-2对称二叉树"><a href="#4-2对称二叉树" class="headerlink" title="4.2对称二叉树"></a>4.2对称二叉树</h6><h6 id="4-3平衡二叉树"><a href="#4-3平衡二叉树" class="headerlink" title="4.3平衡二叉树"></a>4.3平衡二叉树</h6><h6 id="4-4二叉树的最大深度"><a href="#4-4二叉树的最大深度" class="headerlink" title="4.4二叉树的最大深度"></a>4.4二叉树的最大深度</h6><h6 id="4-5二叉树的最小深度"><a href="#4-5二叉树的最小深度" class="headerlink" title="4.5二叉树的最小深度"></a>4.5二叉树的最小深度</h6><h6 id="4-6二叉树的所有路径"><a href="#4-6二叉树的所有路径" class="headerlink" title="4.6二叉树的所有路径"></a>4.6二叉树的所有路径</h6><h6 id="4-7路径总和"><a href="#4-7路径总和" class="headerlink" title="4.7路径总和"></a>4.7路径总和</h6><h6 id="4-8最大二叉树"><a href="#4-8最大二叉树" class="headerlink" title="4.8最大二叉树"></a>4.8最大二叉树</h6><h6 id="4-9合并二叉树"><a href="#4-9合并二叉树" class="headerlink" title="4.9合并二叉树"></a>4.9合并二叉树</h6><h6 id="4-10完全二叉树的节点个数"><a href="#4-10完全二叉树的节点个数" class="headerlink" title="4.10完全二叉树的节点个数"></a>4.10完全二叉树的节点个数</h6><h6 id="4-11二叉树的最近公共祖先"><a href="#4-11二叉树的最近公共祖先" class="headerlink" title="4.11二叉树的最近公共祖先"></a>4.11二叉树的最近公共祖先</h6><h6 id="4-12填充每个节点的下一个右侧节点"><a href="#4-12填充每个节点的下一个右侧节点" class="headerlink" title="4.12填充每个节点的下一个右侧节点"></a>4.12填充每个节点的下一个右侧节点</h6><h6 id="4-13二叉树的序列与反序列化"><a href="#4-13二叉树的序列与反序列化" class="headerlink" title="4.13二叉树的序列与反序列化"></a>4.13二叉树的序列与反序列化</h6>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/31/kotlin-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -386,7 +658,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
