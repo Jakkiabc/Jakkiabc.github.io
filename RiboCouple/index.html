@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RiboCouple — links RNA backbone generation to sequence design</title>
+<meta name="description" content="RiboCouple learns a probabilistic residue-pair topology from RNA backbone geometry and transfers it to sequence decoding as soft attention biases.">
+<style>
+:root{--teal:#2e7e78;--teal-dark:#1f5b56;--ink:#1c2224;--muted:#5c6668;--line:#e2e7e7;--soft:#f4f8f7;--purple:#6d5a8c;--max:1060px}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;background:#fff}
+.wrap{max-width:var(--max);margin:auto;padding:0 24px}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.hero{padding:72px 0 40px;text-align:center;border-bottom:1px solid var(--line)}
+.hero .venue{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);border-radius:99px;padding:5px 14px;margin-bottom:22px}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,4.6vw,52px);line-height:1.12;letter-spacing:-.02em;margin:0 auto 20px;max-width:880px}
+.hero .authors{font-size:17px;margin-bottom:6px}
+.hero .affil{color:var(--muted);font-size:14px;margin-bottom:26px}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+.btnrow a{border:1px solid var(--teal);color:var(--teal);border-radius:99px;padding:8px 18px;font-size:14px;font-weight:600}
+.btnrow a:hover{background:var(--teal);color:#fff;text-decoration:none}
+.claim{font-family:Georgia,serif;font-size:clamp(18px,2.4vw,23px);color:var(--teal-dark);max-width:760px;margin:0 auto;line-height:1.45;font-style:italic}
+.teaser{padding:44px 0 8px}
+.teaser img{width:100%;border:1px solid var(--line);border-radius:6px}
+.figcap{color:var(--muted);font-size:13px;text-align:center;margin-top:10px}
+section{padding:46px 0;border-top:1px solid var(--line)}
+h2{font-family:Georgia,serif;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;margin:0 0 18px}
+h2 .no{color:var(--teal);margin-right:10px}
+.abstract p{font-size:16.5px;max-width:900px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 0}
+.stat{background:var(--soft);border-radius:6px;padding:20px 18px}
+.stat b{display:block;font-family:Georgia,serif;font-size:30px;color:var(--teal);letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted);line-height:1.4;display:block;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:6px;padding:22px}
+.card h3{margin:0 0 8px;font-size:17px;color:var(--teal-dark)}
+.card p{margin:0;font-size:14px;color:var(--muted)}
+.figrow{display:grid;gap:18px;align-items:start}
+.figrow.c2{grid-template-columns:1fr 1fr}
+.figrow.c3{grid-template-columns:1fr 1fr 1fr}
+.figrow.wide-narrow{grid-template-columns:1.35fr 1fr}
+figure{margin:0}
+figure img{width:100%;border:1px solid var(--line);border-radius:6px;background:#fff}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+.result p.lead{max-width:900px;font-size:15.5px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:6px}
+pre{background:#f6f6f4;border:1px solid var(--line);border-radius:6px;padding:16px;font-size:12.5px;overflow-x:auto;line-height:1.5}
+footer{padding:34px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.cards,.figrow.c2,.figrow.c3,.figrow.wide-narrow{grid-template-columns:1fr}.hero{padding:52px 0 32px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<span class="venue">bioRxiv preprint · 2026</span>
+<h1>RiboCouple links RNA backbone generation to sequence design through a learned interaction topology</h1>
+<p class="authors"><strong>Zhiqi Ma</strong>, Yefeng Zheng<sup>&dagger;</sup></p>
+<p class="affil">Westlake University &nbsp;·&nbsp; <sup>&dagger;</sup>Corresponding author</p>
+<div class="btnrow">
+<a href="https://doi.org/10.64898/2026.10.15.759394">Paper (bioRxiv)</a>
+<a href="https://github.com/Jakkiabc/RiboCouple">Code</a>
+<a href="https://jakkiabc.github.io/ribocouple_final1026.pdf">PDF</a>
+</div>
+<p class="claim">A backbone-inferred, probabilistic residue-pair graph that carries interaction information from RNA structure generation into sequence decoding — and can be refined, perturbed, and used to rank candidates.</p>
+</div></header>
+
+<div class="wrap teaser">
+<img src="images/de8db2c48ef35b5cfb5e430d51e0416271b6c0ce80c51d9930b37aa2da5bbfe1.jpg" alt="RiboCouple overview: SE(3) flow matching generates a folded RNA backbone; a learned probabilistic residue-pair state is recycled through a second structural pass and transferred to sequence decoding as soft attention biases.">
+<p class="figcap">Backbone-first RNA design with RiboCouple: structure generation &rarr; learned interaction topology &rarr; pair-biased sequence decoding.</p>
+</div>
+
+<section class="abstract"><div class="wrap">
+<h2><span class="no">01</span>Abstract</h2>
+<p>Designing RNAs with prescribed structures is central to RNA engineering. Backbone-first approaches generate geometry before sequence assignment, yet how to transfer relational information to sequence design remains unclear. We introduce RiboCouple, which infers a probabilistic residue-pair state from backbone geometry, recycles pair probabilities through a second pass and transfers them to sequence decoding as soft attention biases. On 550 generated backbones, pair-type decoding achieved joint refolding validity of 45.1% versus 33.5% for a matched topology-free decoder. In another 110-backbone cohort, replacing aligned pair states with statistics-matched donor states reduced validity from 46.4% to 21.4%, demonstrating that decoding depends on backbone-aligned relational information. Before external refolding, pair-confidence ranking enriched validity to 59.6% in the top 248 and transferred to other generators; on a 94-chain temporally held-out native-backbone benchmark, pair-coupled decoding improved secondary-structure agreement. These findings establish backbone-inferred interaction topology as an intermediate representation connecting backbone generation, sequence decoding, and candidate prioritization.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="no">02</span>Key results at a glance</h2>
+<div class="stats">
+<div class="stat"><b>45.1%</b><span>joint refolding validity on 550 generated backbones, vs 33.5% for a matched topology-free decoder</span></div>
+<div class="stat"><b>46.4&rarr;21.4%</b><span>validity collapse when aligned pair states are swapped for statistics-matched donor states</span></div>
+<div class="stat"><b>+6.9 pp</b><span>advantage transfers to independently generated RNA-FrameFlow backbones without retraining</span></div>
+<div class="stat"><b>1.25&ndash;1.55&times;</b><span>top-248 enrichment from pair-confidence ranking across four structure predictors</span></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="no">03</span>How it works</h2>
+<div class="cards">
+<div class="card"><h3>Infer</h3><p>An SE(3)-equivariant flow-matching trunk generates the RNA backbone while a pair module predicts a probabilistic residue-pair state directly from sequence-free geometry.</p></div>
+<div class="card"><h3>Recycle</h3><p>Binary pair probabilities are recycled into the pair representation before a second structural pass, refining the topology alongside the geometry.</p></div>
+<div class="card"><h3>Transfer</h3><p>Refined binary and typed pair logits become per-head soft attention biases in a Transformer sequence decoder — an explicit interface that can be perturbed at inference to test what decoding actually uses.</p></div>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<h2><span class="no">04</span>Pair-derived attention bias improves backbone&ndash;sequence compatibility</h2>
+<p class="lead">On the same 550 RiboCouple-generated backbones, pair-type decoding outperforms binary-pair and topology-free decoders, as well as external inverse-folding baselines (gRNAde, RIDER) and independent de novo workflows. The advantage is consistent across evaluators (TM-score, RMSD, joint validity) and length ranges.</p>
+<div class="figrow wide-narrow">
+<figure><img src="images/6e130cae39d0230f334ab4df34c9986fc017f5c317e61a598026f433c5c1eef7.jpg" alt="Bar chart: joint-validity rates on the same 550 RiboCouple backbones — pair-type 45.1%, binary-pair 41.3%, topology-free 33.5%, gRNAde 31.8%, RIDER 26.0%; independent de novo workflows 31.4% and 29.1%."><figcaption>Joint-validity rates on a shared backbone cohort and for independent de novo workflows.</figcaption></figure>
+<figure><img src="images/5a842eb4b23ad408fdff68fdf497ddd66b1b0c7e09d8d88b86fb501bc88bb2af.jpg" alt="Heatmap of validity rates for pair-type, binary-pair and topology-free decoders under joint, TM-score and RMSD criteria."><figcaption>The pair-type advantage holds across validity criteria.</figcaption></figure>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<div class="kicker">Controlled interventions</div>
+<h2><span class="no">05</span>Decoding depends on backbone-<em>aligned</em> pair information</h2>
+<p class="lead">Replacing backbone-aligned pair states with statistics-matched states from other backbones — under the same frozen decoder — drops joint validity from 46.4% to 21.4%. Degradation tracks the donor-mixing fraction, and masking the highest-confidence pair edges hurts progressively more, while masking low-confidence edges does not.</p>
+<div class="figrow c3">
+<figure><img src="images/9465331857831a6d6641fae2851ba18de0fca59e02a5bfe1a0c37e76bc27dd24.jpg" alt="Scatter of donor-swap mean TM-score against aligned TM-score per backbone: mean TM falls from 0.447 to 0.319 and joint validity from 46.4% to 21.4%."><figcaption>Donor-state substitution: aligned &rarr; statistics-matched states.</figcaption></figure>
+<figure><img src="images/d3dd91bfce3834b7553d828059d391860559be911bfe2b7f01d1b32feb199206.jpg" alt="Joint-validity rate decreasing as the donor mixing fraction alpha increases from 0 to 1."><figcaption>Validity degrades monotonically with donor mixing.</figcaption></figure>
+<figure><img src="images/4dce592e5c49090a94fa160465b1f8443530f6ec79ae7d27dcc4921581b18c16.jpg" alt="Joint-validity change when masking the highest- versus lowest-confidence strong pair edges."><figcaption>Masking high-confidence edges hurts; low-confidence edges do not.</figcaption></figure>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<h2><span class="no">06</span>The interface transfers across backbone generators</h2>
+<p class="lead">Without retraining the decoder, pair-conditioned decoding improves joint validity on independently generated RNA-FrameFlow backbones (+6.9 pp, P = 6&times;10<sup>&minus;6</sup>) — the advantage is not a property of our own generator.</p>
+<div class="figrow wide-narrow">
+<figure><img src="images/2f5a7ad269fdc1f5a94c0171bba3c49eb3b73ced3c9ec27ef2963cde2e2f6734.jpg" alt="Dumbbell plot: pair-type versus topology-free joint validity on RiboCouple backbones (+11.6 pp) and RNA-FrameFlow backbones (+6.9 pp)."><figcaption>Pair-type gains on RiboCouple and RNA-FrameFlow backbones.</figcaption></figure>
+<figure><img src="images/559f1832a03a689e916d8d926eee223a9c1b88c5ddf0ebbc50355a12f1790be2.jpg" alt="Superposition of a pair-type decoded design refolded onto its target backbone, TM-score 0.818, RMSD 1.95 angstrom."><figcaption>A pair-type design refolded onto its target (TM 0.818, RMSD 1.95 &Aring;).</figcaption></figure>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<h2><span class="no">07</span>Pair-coupled decoding on native RNA backbones</h2>
+<p class="lead">On a temporally held-out benchmark of 94 experimentally determined RNA backbones, pair-coupled decoding roughly doubles predicted secondary-structure agreement (MCC 0.266 &rarr; 0.546; canonical base-pair F1 0.267 &rarr; 0.541) at a small cost in native sequence recovery (43.5% &rarr; 41.6%), with BP-F1 comparable to single-output gRNAde top-1.</p>
+<div class="figrow c2">
+<figure><img src="images/6887c30396f8112101ac7cc602a4b20d4b4ee69cf55b1dbc11a7e12654986302.jpg" alt="Dot plots of sequence recovery, 2D MCC and BP-F1 across inverse-folding methods on 94 native backbones; RiboCouple pair-coupled leads on MCC and BP-F1."><figcaption>Recovery, 2D MCC and BP-F1 across methods on 94 native backbones.</figcaption></figure>
+<figure><img src="images/3e1803df381ba4f0be17881aecaa265b654652755543f942441ce9372952e05f.jpg" alt="Secondary-structure recovery analysis on native RNA backbones including long-range pairs."><figcaption>Pair-class realization on native structures, including long-range pairs (74.7% &rarr; 96.3% for pairs separated by &ge;10 positions).</figcaption></figure>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<h2><span class="no">08</span>Pair confidence prioritizes candidates before refolding</h2>
+<p class="lead">The pair-head confidence score ranks candidates <em>before</em> any external structure prediction: top-248 enrichment of joint-valid designs holds across four independent predictors (RhoFold+, Boltz-1, Boltz-2, trRosettaRNA2) and across backbone generators (RiboCouple, RFDpoly, RNA-FrameFlow).</p>
+<div class="figrow c2">
+<figure><img src="images/316534c4672958ed0ed132e72b8ad23d8aa2e8e28f5852fb9ecf37f7d793d478.jpg" alt="Top-248 enrichment across four structure predictors: RhoFold+ 1.32x, Boltz-1 1.29x, Boltz-2 1.25x, trRosettaRNA2 1.55x."><figcaption>Top-248 enrichment across four structure predictors.</figcaption></figure>
+<figure><img src="images/efb917efbdd4367fa9eea4f2903966973e3bb760bd2741235329761f47d5f2cf.jpg" alt="Joint-validity rate of all candidates versus top-248 by pair confidence for RiboCouple, RFDpoly and RNA-FrameFlow backbones, gaining 14.5, 15.3 and 17.3 percentage points."><figcaption>Confidence-ranked top-248 gains across three backbone generators.</figcaption></figure>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="no">09</span>Citation</h2>
+<pre>@article{ma2026ribocouple,
+  title   = {RiboCouple links RNA backbone generation to sequence design through a learned interaction topology},
+  author  = {Ma, Zhiqi and Zheng, Yefeng},
+  year    = {2026},
+  journal = {bioRxiv},
+  doi     = {10.64898/2026.10.15.759394}
+}</pre>
+</div></section>
+
+<footer><div class="wrap">
+RiboCouple project page &nbsp;·&nbsp; <a href="mailto:zhengyefeng@westlake.edu.cn">Correspondence: Yefeng Zheng</a> &nbsp;·&nbsp; <a href="https://jakkiabc.github.io/">Zhiqi Ma</a>
+</div></footer>
+</body>
+</html>
