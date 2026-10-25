@@ -135,22 +135,22 @@ footer{padding:34px 0 60px;color:var(--muted);font-size:14px;border-top:1px soli
 </div></section>
 
 <section class="result"><div class="wrap">
-<div class="kicker">Biological relevance</div>
-<h2><span class="no">08</span>Why this matters for RNA biology</h2>
-<p class="lead">RNA function — ligand sensing, catalysis, gene regulation — depends on three-dimensional conformation, and conformation is organized by base-pairing interactions: canonical pairs form helices, while noncanonical and long-range contacts shape the junctions and motifs that make aptamers bind and riboswitches switch. A generated backbone, however, is only a scaffold. Unless the designed sequence actually realizes the intended pairing network, the molecule has no reason to adopt the intended fold. That realization step is what RiboCouple supplies — and it shows on functional RNAs, with gains across all 12 annotated RNA groups in the native benchmark, including ribozymes and IRES elements, and 99.4% canonical compatibility on tRNA pairs.</p>
-<div class="cards">
-<div class="card"><h3>HIV-1 TAR</h3><p>20 of 22 native base pairs reconstructed, including the upper-stem pairs adjoining the UCU bulge that mediates Tat recognition.</p></div>
-<div class="card"><h3>yybP-ykoY riboswitch</h3><p>37 of 38 native aptamer pairs reconstructed — the pairing network that scaffolds the Mn<sup>2+</sup>-sensing conformation required for riboswitch switching.</p></div>
-<div class="card"><h3>Long-range contacts</h3><p>For native pairs separated by ten or more positions in sequence, canonical compatibility rises from 74.7% with residue-wise decoding to 96.3% with pair-coupled decoding.</p></div>
-</div>
-</div></section>
-
-<section class="result"><div class="wrap">
-<h2><span class="no">09</span>Pair confidence prioritizes candidates before refolding</h2>
+<h2><span class="no">08</span>Pair confidence prioritizes candidates before refolding</h2>
 <p class="lead">The pair-head confidence score ranks candidates <em>before</em> any external structure prediction: top-248 enrichment of joint-valid designs holds across four independent predictors (RhoFold+, Boltz-1, Boltz-2, trRosettaRNA2) and across backbone generators (RiboCouple, RFDpoly, RNA-FrameFlow).</p>
 <div class="figrow c2">
 <figure><img src="images/316534c4672958ed0ed132e72b8ad23d8aa2e8e28f5852fb9ecf37f7d793d478.jpg" alt="Top-248 enrichment across four structure predictors: RhoFold+ 1.32x, Boltz-1 1.29x, Boltz-2 1.25x, trRosettaRNA2 1.55x."><figcaption>Top-248 enrichment across four structure predictors.</figcaption></figure>
 <figure><img src="images/efb917efbdd4367fa9eea4f2903966973e3bb760bd2741235329761f47d5f2cf.jpg" alt="Joint-validity rate of all candidates versus top-248 by pair confidence for RiboCouple, RFDpoly and RNA-FrameFlow backbones, gaining 14.5, 15.3 and 17.3 percentage points."><figcaption>Confidence-ranked top-248 gains across three backbone generators.</figcaption></figure>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<div class="kicker">Biological relevance</div>
+<h2><span class="no">09</span>Why this matters for RNA design</h2>
+<p class="lead">RNA function — ligand sensing, catalysis, gene regulation — is organized by base-pairing interactions, and designing RNAs with prescribed structures is a central goal of RNA engineering. RiboCouple turns that organization into something a design pipeline can directly use: an explicit, backbone-aligned pairing interface that transfers across generators, ranks candidates before any expensive structure prediction, and reconstructs the pairing networks that functional RNAs depend on — including the Tat-recognition stem of HIV-1 TAR and the Mn<sup>2+</sup>-sensing switch of the yybP-ykoY riboswitch, with gains across all 12 annotated RNA groups in the native benchmark.</p>
+<div class="cards">
+<div class="card"><h3>An interface you can inspect</h3><p>The pairing network is explicit and perturbable, not a hidden representation: swapping in statistics-matched pairs from other backbones collapses validity (46.4% &rarr; 21.4%), showing decoding truly reads backbone-aligned information.</p></div>
+<div class="card"><h3>Generator-agnostic</h3><p>No retraining needed: pair-conditioned decoding improves independently generated RNA-FrameFlow backbones (+6.9 pp), and the same confidence signal ranks candidates from RNA-FrameFlow and RFDpoly.</p></div>
+<div class="card"><h3>Screening before refolding</h3><p>Pair confidence ranks candidates before any external structure prediction: 1.25&ndash;1.55&times; top-248 enrichment across four predictors, roughly 20&ndash;35% fewer refolding evaluations per valid design.</p></div>
 </div>
 </div></section>
 
