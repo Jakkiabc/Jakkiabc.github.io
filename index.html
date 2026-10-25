@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zhiqi Ma — AI for Biomolecular Design & Scientific Discovery</title>
+<meta name="description" content="Zhiqi Ma — Generative AI for RNA, therapeutic sequences, and reliable biomolecular design.">
+<meta property="og:title" content="Zhiqi Ma — AI for Biomolecular Design & Scientific Discovery">
+<meta property="og:description" content="Generative AI for RNA, therapeutic sequences, and reliable biomolecular design.">
+<meta property="og:type" content="website">
+<style>
+:root{--ink:#111315;--muted:#666b70;--line:#dfe3e6;--soft:#f5f7f7;--accent:#315f57;--max:1120px}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;line-height:1.55} a{color:inherit;text-decoration:none} a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.wrap{max-width:var(--max);margin:auto;padding:0 28px}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-weight:650;letter-spacing:-.02em}.links{display:flex;gap:24px;font-size:14px;color:var(--muted)}.links a:hover,.footer-links a:hover,.pub-links a:hover{color:var(--accent)}.hero{padding:108px 0 82px;position:relative;overflow:hidden}.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(58px,9vw,116px);line-height:.88;letter-spacing:-.055em;margin:18px 0 28px;max-width:900px}.hero .lead{font-size:clamp(21px,3vw,31px);max-width:850px;line-height:1.28;letter-spacing:-.025em}.hero .sub{margin-top:24px;max-width:720px;color:var(--muted);font-size:17px}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}.chip{border:1px solid var(--line);padding:8px 12px;border-radius:99px;font-size:13px}.orb{position:absolute;width:360px;height:360px;border:1px solid #d7dfdc;border-radius:50%;right:-80px;top:70px;opacity:.65}.orb:before,.orb:after{content:"";position:absolute;border:1px solid #d7dfdc;border-radius:50%;inset:45px}.orb:after{inset:95px}.section{padding:82px 0;border-top:1px solid var(--line)}.section-head{display:grid;grid-template-columns:1fr 2fr;gap:40px;margin-bottom:44px}.kicker{font-size:13px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}.section h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,5vw,55px);line-height:1.03;letter-spacing:-.035em;margin:0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--soft);padding:28px;min-height:330px;border-radius:3px;display:flex;flex-direction:column}.num{font-family:Georgia,serif;font-size:34px;color:var(--accent)}.card h3{font-size:22px;letter-spacing:-.025em;margin:40px 0 12px}.card p{color:var(--muted);margin:0}.metric{margin-top:auto;padding-top:28px}.metric-label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:600;margin-bottom:9px}.metric-keys{display:block;font-family:Georgia,serif;font-size:21px;letter-spacing:-.01em;color:var(--ink)}.vision{background:#111315;color:#fff;padding:62px;border-radius:3px}.vision h2{max-width:780px}.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px;border-top:1px solid #404447}.step{padding:22px 16px 0 0;font-size:14px;color:#aeb5b7;position:relative}.step:before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;position:absolute;top:-4px;left:0}.step strong{display:block;color:#fff;font-size:17px;margin-bottom:7px}.about{display:grid;grid-template-columns:1fr 1.8fr;gap:60px}.about p{font-size:15px;line-height:1.75;margin:0 0 16px;max-width:760px}.small{font-size:15px!important;color:var(--muted);margin-top:24px!important}footer{padding:50px 0 70px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.foot{display:flex;justify-content:space-between;gap:20px}.footer-links{line-height:1.8}
+@media(max-width:800px){.nav{height:auto;min-height:76px;gap:18px}.links{gap:14px;overflow-x:auto;padding:18px 0;font-size:13px;min-width:0}.hero{padding-top:72px}.section-head,.about{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.vision{padding:34px 24px}.flow{grid-template-columns:1fr;border-top:0}.step{border-top:1px solid #404447;padding:18px 0}.step:before{display:none}.orb{display:none}.foot{display:block}.foot div+div{margin-top:14px}}
+
+.pub-list{display:flex;flex-direction:column;gap:0}
+.pub-item{padding:28px 0;border-bottom:1px solid var(--line)}
+.pub-item h3{font-size:22px;line-height:1.35;margin:0 0 10px}
+.pub-badge{display:inline-block;vertical-align:middle;margin-left:8px;padding:3px 8px;border:1px solid var(--line);border-radius:99px;color:var(--accent);font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+.pub-meta{color:var(--muted);font-size:14px;margin-bottom:14px}
+.pub-item p{margin:8px 0}
+.pub-authors{margin:0 0 5px!important;color:var(--ink)!important;font-size:15px}
+.pub-status{color:var(--muted);font-size:13px!important;font-style:italic}
+.pub-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.pub-links a{border:1px solid var(--line);border-radius:99px;padding:5px 10px;font-size:13px;color:var(--accent)}
+.background-group h3{font-size:13px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin:0 0 10px}
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:26px 0 58px;position:relative}
+.journey:before{content:"";position:absolute;left:10%;right:10%;top:10px;border-top:1px solid var(--line)}
+.journey-item{position:relative;padding:34px 22px 0 0}
+.journey-item:before{content:"";position:absolute;top:5px;left:0;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--accent);z-index:1}
+.journey-item:last-child{padding-right:0}
+.journey-date{display:block;color:var(--accent);font-size:13px;font-weight:650;margin-bottom:10px}
+.journey-item h4{font-size:17px;letter-spacing:-.015em;line-height:1.3;margin:0 0 6px}
+.journey-item p{color:var(--muted);font-size:13px;line-height:1.55;margin:0}
+.why-biology{margin:0 0 52px;padding:34px;background:var(--soft);border-radius:3px}
+.why-biology h3{font-family:Georgia,"Times New Roman",serif;font-size:30px;letter-spacing:-.025em;text-transform:none;color:var(--ink);margin:0 0 12px}
+.why-biology>p{max-width:900px;color:var(--muted);font-size:15px;margin:0 0 30px}
+.path-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.path-step{position:relative;border-top:1px solid var(--line);padding-top:15px}
+.path-step:not(:last-child):after{content:"→";position:absolute;right:-20px;top:10px;color:var(--accent);font-size:18px}
+.path-step strong{display:block;font-size:15px;line-height:1.35;margin-bottom:5px}
+.path-step span{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+.path-step .path-note{color:var(--accent);font-family:Georgia,"Times New Roman",serif;font-size:14px;font-style:italic;margin-top:10px}
+.education-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.honors-group{margin-top:44px}
+.honors-list{display:grid;grid-template-columns:1.35fr 1fr;gap:32px}
+.timeline-item{display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 0;border-top:1px solid var(--line)}
+.timeline-item:last-child{border-bottom:1px solid var(--line)}
+.timeline-item h4{font-size:18px;letter-spacing:-.015em;margin:0 0 3px}
+.timeline-item p{color:var(--muted);font-size:14px;margin:0}
+.timeline-date{color:var(--muted);font-size:13px;white-space:nowrap;padding-top:3px;text-align:right}
+.personal-photo{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;margin-top:20px;border-radius:3px}
+.beyond-copy p{font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.5;margin:0}
+.beyond-copy a{border-bottom:1px solid var(--accent)}
+@media(max-width:800px){.journey{grid-template-columns:1fr;margin:22px 0 48px;padding-left:18px}.journey:before{left:5px;right:auto;top:6px;bottom:6px;border-top:0;border-left:1px solid var(--line)}.journey-item{padding:0 0 30px 24px}.journey-item:before{top:3px;left:-18px}.journey-item:last-child{padding-bottom:0}.why-biology{padding:28px 22px}.path-flow{grid-template-columns:1fr;gap:18px}.path-step:not(:last-child):after{content:"↓";right:0;top:auto;bottom:-18px}.education-grid,.honors-list{grid-template-columns:1fr;gap:0}.timeline-item{grid-template-columns:1fr;gap:4px}.timeline-date{text-align:left}}
+
+</style>
+</head>
+<body>
+<div class="wrap"><nav class="nav" aria-label="Primary navigation"><a class="brand" href="#top">ZHIQI MA</a><div class="links"><a href="#research">Research</a><a href="#work">Publications</a><a href="#background">Background</a><a href="#vision">Vision</a><a href="#about">About</a></div></nav></div>
+<main id="top">
+<section class="hero"><div class="wrap"><div class="eyebrow">AI × RNA × Biomolecular Discovery</div><h1>Zhiqi Ma</h1><div class="lead">AI for Biomolecular Design &amp; Scientific Discovery.</div><div class="sub">I develop generative and optimization methods for RNA, therapeutic sequences, and reliable biomolecular design — with the long-term goal of closing the loop between scientific reasoning, molecular generation, and biological experiments.</div><div class="chips"><a class="chip" href="https://medai.lab.westlake.edu.cn/" target="_blank" rel="noopener noreferrer">Visiting Student · MedAI Lab, Westlake University</a><a class="chip" href="https://www.bza.edu.cn/" target="_blank" rel="noopener noreferrer">Joint PhD Program Pre-admit · Zhongguancun Academy</a><span class="chip">Generative AI</span><span class="chip">RNA / siRNA</span><span class="chip">Biomolecular Design</span></div><div class="orb"></div></div></section>
+<section class="section" id="research"><div class="wrap"><div class="section-head">
+<div class="kicker">Research</div>
+<h2>Three directions toward biomolecular discovery.</h2>
+</div>
+<div class="grid3">
+
+<article class="card">
+<div class="num">01</div>
+<h3>RNA Intelligence</h3>
+<p>Developing generative models to understand and design RNA molecules by bridging sequence, structure, and biological constraints.</p>
+<div class="metric"><span class="metric-label">Focus</span><span class="metric-keys">sequence · structure · topology</span></div>
+</article>
+
+<article class="card">
+<div class="num">02</div>
+<h3>Therapeutic Biomolecular Design</h3>
+<p>Developing generative approaches for therapeutic molecules that bridge computational design and biological function, from RNAi candidates to antimicrobial peptides.</p>
+<div class="metric"><span class="metric-label">Focus</span><span class="metric-keys">siRNA · peptide · activity optimization</span></div>
+</article>
+
+<article class="card">
+<div class="num">03</div>
+<h3>Reliable Biomolecular Generation</h3>
+<p>Developing evaluation frameworks that answer one question before anything reaches the lab: how do we know this candidate is reliable? Testing generative candidates under conflicting objectives and real-world trade-offs.</p>
+<div class="metric"><span class="metric-label">Focus</span><span class="metric-keys">evaluation · uncertainty · model–lab feedback</span></div>
+</article>
+
+</div></div></section>
+<section class="section" id="work"><div class="wrap">
+<div class="section-head"><div class="kicker">Publications &amp; Preprints</div><h2>Scientific questions behind the work.</h2></div>
+<div class="pub-list">
+<div class="pub-item">
+<h3>RiboCouple links RNA backbone generation to sequence design through a learned interaction topology <span class="pub-badge">Under review</span></h3>
+<p class="pub-authors"><strong>Zhiqi Ma</strong>, Yefeng Zheng†</p>
+<div class="pub-meta">bioRxiv preprint, 2026</div>
+<p><strong>Scientific question:</strong> How can residue relationships inferred from sequence-free backbone geometry be preserved and transferred to sequence design?</p>
+<p><strong>Computational evidence:</strong> Pair-type decoding reached <strong>45.1%</strong> joint refolding validity versus <strong>33.5%</strong> for a matched topology-free decoder (550 generated backbones). Replacing backbone-aligned pair states with statistics-matched donors dropped validity from <strong>46.4% to 21.4%</strong> under the same frozen decoder — decoding uses backbone-aligned pair information, not pair statistics alone.</p>
+<p>The learned interface transfers to backbones from other generators without retraining, improves secondary-structure agreement on 94 native RNAs, and its pair confidence prioritizes candidates before external structure prediction.</p>
+<div class="pub-links"><a href="https://www.biorxiv.org/content/10.64898/2026.10.15.759394v1" target="_blank" rel="noopener noreferrer">Paper</a><a href="ribocouple_final1026.pdf" target="_blank" rel="noopener noreferrer">PDF</a><a href="https://github.com/Jakkiabc/RiboCouple" target="_blank" rel="noopener noreferrer">Code</a></div>
+</div>
+<div class="pub-item">
+<h3>siProGenA: Generative siRNA Candidate Construction via Position Proposal and Guide Generation <span class="pub-badge">Independently conceived</span></h3>
+<p class="pub-authors"><strong>Zhiqi Ma*</strong>, Jiale Zhou*,  Rubo Wang,Zhipeng Deng, Zhijian Wu, Yefeng Zheng†</p>
+<div class="pub-meta">bioRxiv preprint, 2026</div>
+<p><strong>Scientific question:</strong> <strong>Where</strong> to target · <strong>What</strong> guide sequence to design.</p>
+<p><strong>Biological hypothesis:</strong> Can controlled deviations from canonical complementarity improve the potency–specificity trade-off in siRNA design?</p>
+<p><strong>Computational evidence:</strong> Across 354 measured sites, constrained variants outscored canonical complements under all four evaluators (85.1% on average). Matched-random, GC, and secondary-structure controls support the comparison.</p>
+<p>siProGenA reframes siRNA design as generative <strong>Where</strong>/<strong>What</strong> candidate construction, producing compact transcript-level libraries intended to reduce synthesis and screening burden.</p>
+<div class="pub-links"><a href="https://www.biorxiv.org/content/10.64898/2026.08.31.748303v1" target="_blank" rel="noopener noreferrer">Paper</a></div>
+<p class="pub-status"><a href="mailto:zhiqima@link.cuhk.edu.cn">Seeking experimental and translational collaborators.</a></p>
+</div>
+<div class="pub-item">
+<h3>siRNA-mRNA Dual Diffusion Model for RNAi Drug Design <span class="pub-badge">Independently conceived</span></h3>
+<p class="pub-authors"><strong>Zhiqi Ma</strong>, Xubin Zheng†</p>
+<div class="pub-meta">ICLR 2025 AI4NA Workshop</div>
+<p><strong>Scientific question:</strong> How to generate effective RNAi candidates with diffusion models under biological constraints.</p>
+<p>A diffusion-based framework for RNAi candidate generation by modeling target context and guide sequence design.</p>
+<div class="pub-links"><a href="https://openreview.net/forum?id=mhTwQmNTQA" target="_blank" rel="noopener noreferrer">Paper</a></div>
+</div>
+<div class="pub-item">
+<h3>PRAGA: Prototype-aware Graph Adaptive Aggregation for Spatial Multi-Modal Omics Analysis</h3>
+<p class="pub-authors">Xinlei Huang, <strong>Zhiqi Ma</strong>, Dian Meng, Yanran Liu, Shiwei Ruan, Qingqiang Sun, Xubin Zheng†, Ziyue Qiao</p>
+<div class="pub-meta">AAAI 2025</div>
+<p><strong>Scientific question:</strong> How to learn robust biological representations from spatial multimodal omics data.</p>
+<p>A prototype-aware graph learning framework for multimodal spatial omics representation.</p>
+<div class="pub-links"><a href="https://doi.org/10.1609/aaai.v39i1.32010" target="_blank" rel="noopener noreferrer">Paper</a><a href="https://arxiv.org/abs/2409.12728" target="_blank" rel="noopener noreferrer">Preprint</a></div>
+</div>
+<div class="pub-item">
+<h3>M2oE: Multimodal Collaborative Expert Peptide Model</h3>
+<p class="pub-authors">Zengzhu Guo*, <strong>Zhiqi Ma*</strong></p>
+<div class="pub-meta">IEEE BIBM 2024</div>
+<p><strong>Scientific question:</strong> How to integrate multimodal biological information for peptide representation learning.</p>
+<p>A multimodal expert framework for learning peptide representations from complementary biological features.</p>
+<div class="pub-links"><a href="https://arxiv.org/abs/2411.15208" target="_blank" rel="noopener noreferrer">Paper</a><a href="https://github.com/goldzzmj/M2oE" target="_blank" rel="noopener noreferrer">Code</a></div>
+</div>
+</div></div></section>
+<section class="section" id="background"><div class="wrap">
+<div class="section-head"><div class="kicker">Background</div><h2>Experience &amp; education.</h2></div>
+<div class="background-group"><h3>Research Journey</h3>
+<div class="journey">
+<div class="journey-item"><span class="journey-date">Jul–Oct 2023</span><h4>NetEase Games</h4><p>Business Intelligence Researcher · Generative AI</p></div>
+<div class="journey-item"><span class="journey-date">Jun 2024–Jun 2025</span><h4>Great Bay University</h4><p>Research Assistant Intern · Prof. Xubin Zheng</p></div>
+<div class="journey-item"><span class="journey-date">Jun–Oct 2025</span><h4>SJTU School of Medicine</h4><p>Research Assistant Intern · Prof. Haicang Zhang</p></div>
+<div class="journey-item"><span class="journey-date">Jan–May 2026</span><h4>Peking University</h4><p>Research Assistant Intern</p></div>
+<div class="journey-item"><span class="journey-date">Jun 2026–Present</span><h4><a href="https://medai.lab.westlake.edu.cn/" target="_blank" rel="noopener noreferrer">Westlake University</a></h4><p>Visiting Student · MedAI Lab · Prof. Yefeng Zheng</p></div>
+</div></div>
+<div class="why-biology"><h3>Why Biology?</h3>
+<p>I moved from general AI to biology because I wanted to work on questions where computational advances could deepen our understanding of living systems and ultimately create tangible value for human health.</p>
+<div class="path-flow">
+<div class="path-step"><strong>Mathematics &amp; Modeling</strong><span>Understanding complex systems through abstraction</span></div>
+<div class="path-step"><strong>Generative AI</strong><span>Learning how AI can create and optimize</span></div>
+<div class="path-step"><strong>AI for Biology</strong><span>Moving from medical imaging toward deeper biological questions</span></div>
+<div class="path-step"><strong>RNA &amp; Therapeutic Design</strong><span>Connecting sequence, structure, and function</span></div>
+<div class="path-step"><strong>Scientific Discovery</strong><span>Linking computation with experiments, translation, and real-world deployment</span><span class="path-note">The 23rd century will be the age of biology.</span></div>
+</div></div>
+<div class="background-group"><h3>Education</h3><div class="education-grid">
+<div class="timeline-item"><div><h4>M.Sc. in Bioinformatics</h4><p>The Chinese University of Hong Kong, Shenzhen</p></div><div class="timeline-date">2024–2026</div></div>
+<div class="timeline-item"><div><h4>B.Eng. in Information and Computing Science</h4><p>Jinan University–University of Birmingham International Joint Programme</p></div><div class="timeline-date">2020–2024</div></div>
+</div></div>
+<div class="background-group honors-group"><h3>Selected Honors</h3><div class="honors-list">
+<div class="timeline-item"><div><h4>National Second Prize</h4><p>National College Students Mathematical Modeling Competition · Top 3% nationally</p></div><div class="timeline-date">2021 &amp; 2022</div></div>
+<div class="timeline-item"><div><h4>Academic Rising Stars Scholarship</h4><p>Jinan University</p></div><div class="timeline-date">2023</div></div>
+</div></div>
+</div></section>
+<section class="section" id="vision"><div class="wrap"><div class="vision"><div class="kicker">Long-term research vision</div><h2>Beyond benchmark optimization.</h2><div class="flow"><div class="step"><strong>Understand</strong><span>Learning representations that capture biological structure, function, and constraints.</span></div><div class="step"><strong>Generate &amp; Reason</strong><span>Building AI systems that generate molecular designs and reason about scientific hypotheses.</span></div><div class="step"><strong>Validate</strong><span>Testing computational predictions through independent evaluation and biological experiments.</span></div><div class="step"><strong>Discover</strong><span>Turning validated models and hypotheses into new scientific insights and real-world applications.</span></div></div><p class="small">My long-term goal is to develop reliable AI systems that move beyond black-box optimization toward scientifically grounded discovery. I am particularly interested in connecting generative models, scientific reasoning, biological validation, and research translation—and in building scientific agents that can support this iterative process. As AI takes on more of the search, I want the questions to stay human — these tools should extend a researcher's judgment, not replace it.</p></div></div></section>
+<section class="section" id="about"><div class="wrap"><div class="about">
+<div><div class="kicker">About</div></div>
+<div>
+<p>I am a researcher working at the intersection of generative AI, computational biology, and scientific discovery.</p>
+<p>I received my M.Sc. in Bioinformatics from The Chinese University of Hong Kong, Shenzhen, and I am currently a Visiting Student at Westlake University.</p>
+<p>My research focuses on generative models for RNA and therapeutic biomolecules, particularly sequence–structure co-design, siRNA generation, and reliable molecular optimization. Across these problems, I am interested in how structural and biological constraints can be incorporated into generative models, and how model-guided optimization can be evaluated reliably.</p>
+</div></div></div></section>
+
+<section class="section" id="beyond"><div class="wrap"><div class="about">
+<div><div class="kicker">Beyond Research</div><img class="personal-photo" src="a4cdef4c-da1b-4e73-a678-d5cda2927358.jpg" alt="Zhiqi Ma at a vintage red telephone"></div>
+<div class="beyond-copy"><p>Outside research, I enjoy films, music, and a quiet drink with friends. One song I keep returning to is <a href="https://open.spotify.com/track/0oyWLRiJRXkRRRdpgmbbw6" target="_blank" rel="noopener noreferrer"><em>The Last Day of the End of the World</em></a> by NoMBe.</p></div>
+</div></div></section></main>
+<footer><div class="wrap foot"><div>© 2026 Zhiqi Ma · AI for Biomolecular Design &amp; Scientific Discovery <span id="visit-count" style="margin-left:6px;"></span></div><div class="footer-links">I welcome research and translational collaborations in AI for Science, biomolecular design, and experimental validation. Feel free to reach out!<br><a href="mailto:zhiqima@link.cuhk.edu.cn">Email</a> · <a href="https://scholar.google.com/citations?hl=en&amp;user=cG0evecAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></div></div></footer>
+<script>
+/* Visit counter */
+fetch('https://count.getloli.com/get/@zhiqima-homepage')
+  .then(r => r.json())
+  .then(d => {
+    const el = document.getElementById('visit-count');
+    if(el) el.textContent = '· ' + d.count.toLocaleString() + ' visits';
+  })
+  .catch(() => {});
+</script>
+</body></html>
