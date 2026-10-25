@@ -126,7 +126,7 @@ footer{padding:34px 0 60px;color:var(--muted);font-size:14px;border-top:1px soli
 
 <section class="result"><div class="wrap">
 <h2><span class="no">07</span>Pair-coupled decoding on native RNA backbones</h2>
-<p class="lead">On a temporally held-out benchmark of 94 experimentally determined RNA backbones, pair-coupled decoding roughly doubles predicted secondary-structure agreement (MCC 0.266 &rarr; 0.546; canonical base-pair F1 0.267 &rarr; 0.541) at a small cost in native sequence recovery (43.5% &rarr; 41.6%), with BP-F1 comparable to single-output gRNAde top-1. For native pairs separated by ten or more positions, pair-class realization rises from 74.7% to 96.3%.</p>
+<p class="lead">On a temporally held-out benchmark of 94 experimentally determined RNA backbones, pair-coupled decoding roughly doubles predicted secondary-structure agreement (MCC 0.266 &rarr; 0.546; canonical base-pair F1 0.267 &rarr; 0.541) at a small cost in native sequence recovery (43.5% &rarr; 41.6%), with BP-F1 comparable to single-output gRNAde top-1.</p>
 <div class="figrow wide-narrow">
 <figure><img src="images/fig5_ef_cases.jpg" alt="Case studies on HIV-1 TAR and the yybP-ykoY riboswitch: pair-coupled decoding recovers native base pairs (teal) while topology-free decoding misses them."><figcaption>Case studies: pair-coupled decoding recovers native pairing patterns in HIV-1 TAR (20/22 pairs) and the yybP-ykoY riboswitch (37/38); topology-free decoding recovers none.</figcaption></figure>
 <figure><img src="images/6887c30396f8112101ac7cc602a4b20d4b4ee69cf55b1dbc11a7e12654986302.jpg" alt="Dot plots of sequence recovery, 2D MCC and BP-F1 across inverse-folding methods on 94 native backbones; RiboCouple pair-coupled leads on MCC and BP-F1."><figcaption>Recovery, 2D MCC and BP-F1 across methods on 94 native backbones.</figcaption></figure>
@@ -134,7 +134,18 @@ footer{padding:34px 0 60px;color:var(--muted);font-size:14px;border-top:1px soli
 </div></section>
 
 <section class="result"><div class="wrap">
-<h2><span class="no">08</span>Pair confidence prioritizes candidates before refolding</h2>
+<div class="kicker">Biological relevance</div>
+<h2><span class="no">08</span>Pairing patterns are what make RNA functional</h2>
+<p class="lead">Base pairs organize the helices, junctions and tertiary contacts that RNA function depends on. Pair-coupled decoding recovers these patterns across all 12 annotated RNA groups in the native benchmark — including ribozymes and IRES elements — with canonical compatibility reaching 99.4% for tRNA pairs.</p>
+<div class="cards">
+<div class="card"><h3>HIV-1 TAR</h3><p>20 of 22 native base pairs reconstructed, including the upper-stem pairs adjoining the UCU bulge that mediates Tat recognition.</p></div>
+<div class="card"><h3>yybP-ykoY riboswitch</h3><p>37 of 38 native aptamer pairs reconstructed — the pairing network that scaffolds the Mn<sup>2+</sup>-sensing conformation required for riboswitch switching.</p></div>
+<div class="card"><h3>Long-range contacts</h3><p>For native pairs separated by ten or more positions in sequence, canonical compatibility rises from 74.7% with residue-wise decoding to 96.3% with pair-coupled decoding.</p></div>
+</div>
+</div></section>
+
+<section class="result"><div class="wrap">
+<h2><span class="no">09</span>Pair confidence prioritizes candidates before refolding</h2>
 <p class="lead">The pair-head confidence score ranks candidates <em>before</em> any external structure prediction: top-248 enrichment of joint-valid designs holds across four independent predictors (RhoFold+, Boltz-1, Boltz-2, trRosettaRNA2) and across backbone generators (RiboCouple, RFDpoly, RNA-FrameFlow).</p>
 <div class="figrow c2">
 <figure><img src="images/316534c4672958ed0ed132e72b8ad23d8aa2e8e28f5852fb9ecf37f7d793d478.jpg" alt="Top-248 enrichment across four structure predictors: RhoFold+ 1.32x, Boltz-1 1.29x, Boltz-2 1.25x, trRosettaRNA2 1.55x."><figcaption>Top-248 enrichment across four structure predictors.</figcaption></figure>
@@ -143,7 +154,7 @@ footer{padding:34px 0 60px;color:var(--muted);font-size:14px;border-top:1px soli
 </div></section>
 
 <section><div class="wrap">
-<h2><span class="no">09</span>Citation</h2>
+<h2><span class="no">10</span>Citation</h2>
 <pre>@article{ma2026ribocouple,
   title   = {RiboCouple links RNA backbone generation to sequence design through a learned interaction topology},
   author  = {Ma, Zhiqi and Zheng, Yefeng},
